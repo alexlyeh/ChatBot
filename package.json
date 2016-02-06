@@ -14,10 +14,12 @@
     "url": "https://github.com/alexlyeh/ChatBot.git"
   },
   "dependencies": {
-
+    "facebook-chat-api": "git://github.com/schmavery/facebook-chat-api",
+    "ejs": "2.3.3",
+    "express": "4.13.3"
   },
   "engines": {
-    "node": "0.12.x"
+    "node": "4.0.0"
   },
   "bugs": {
     "url": "https://github.com/alexlyeh/ChatBot/issues"
