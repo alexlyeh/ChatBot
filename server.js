@@ -19,6 +19,7 @@ login({email: "alexyuiop@gmail.com", password: "tartanhacks"}, function callback
     api.setOptions({listenEvents: true});
  	var coins = 0;
  	var slient = false;
+
     var stopListening = api.listen(function(err, event) {
     	if(err) return console.error(err);
 	 	console.log(event);
@@ -27,18 +28,22 @@ login({email: "alexyuiop@gmail.com", password: "tartanhacks"}, function callback
 	          	var call = event.body.substring(0, 6);
 	          	var text_string = event.body.replace("Alfred ", "");
 	          	if (call == "Alfred" || call == "alfred") {
-		            if(text_string === 'shut up' || text_string == 'stop' && !slient) {
+		            if((text_string === 'shut up' || text_string === 'stop') && !slient) {
 		              api.sendMessage("Ok see you later", event.threadID);
 		              slient = true;
-		            } else if(text_string === 'start listening' || text_string == 'start') {
+		            } else if(text_string === 'start listening' || text_string === 'start') {
 		              api.sendMessage("Hello I'm the Alfred chat bot.", event.threadID);
 			          api.sendMessage({sticker: 144884765685790}, event.threadID);
 		              slient = false;
 		            }
+		        	else if (text_string === 'Scott sucks') {
+		        		api.sendMessage("Scott you suck a lot ha Alpha'd", event.threadID);
+		        		slient = false;
+		        	}
 		        } 
 		        else {
 		        	if (!slient) {
-			            if(event.body == '/add coin') {
+			            if(event.body === '/add coin') {
 			            	coins++;
 			              	api.sendMessage("I now have " + coins + "! I am rich.", event.threadID);
 			            } else if(event.body === '/takeaway coin') {
