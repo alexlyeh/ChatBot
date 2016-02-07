@@ -25,9 +25,9 @@ login({email: "alexyuiop@gmail.com", password: "tartanhacks"}, function callback
 	 	console.log(event);
 	    switch(event.type) {
 	    	case "message":
-	          	var call = event.body.substring(0, 6);
-	          	var text_string = event.body.replace("Alfred ", "");
-	          	if (call == "Alfred" || call == "alfred") {
+	          	var call = event.body.toLowerCase().substring(0, 6);
+	          	var text_string = event.body.toLowerCase().replace("alfred ", "");
+	          	if (call == "alfred") {
 		            if((text_string === 'shut up' || text_string === 'stop') && !slient) {
 		              api.sendMessage("Ok see you later", event.threadID);
 		              slient = true;
@@ -36,17 +36,20 @@ login({email: "alexyuiop@gmail.com", password: "tartanhacks"}, function callback
 			          api.sendMessage({sticker: 144884765685790}, event.threadID);
 		              slient = false;
 		            }
-		        	else if (text_string === 'Scott sucks') {
-		        		api.sendMessage("Scott you suck a lot ha Alpha'd", event.threadID);
+		        	else if (text_string === 'scott sucks') {
+		        		api.sendMessage("Jake you suck a lot ha Alpha'd.", event.threadID);
 		        		slient = false;
+		        	} else {
+		        		api.sendMessage("I didn't quite get that.", event.threadID);
 		        	}
-		        } 
-		        else {
+		        } else if (event.body.toLowerCase().indexOf("alfred") > -1) {
+					api.sendMessage("Please begin your request with my first name, you peasant.", event.threadID);
+		        } else {
 		        	if (!slient) {
-			            if(event.body === '/add coin') {
+			            if(event.body.toLowerCase() === '/add coin') {
 			            	coins++;
 			              	api.sendMessage("I now have " + coins + "! I am rich.", event.threadID);
-			            } else if(event.body === '/takeaway coin') {
+			            } else if(event.body.toLowerCase() === '/takeaway coin') {
 			            	coins--;
 			              	api.sendMessage("I now have " + coins + "! I am poor.", event.threadID);
 			            } else {
