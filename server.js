@@ -36,7 +36,7 @@ login({email: "alexyuiop@gmail.com", password: "tartanhacks"}, function callback
 		              slient = true;
 		            } else if(text_string === 'start listening' || text_string === 'start') {
 		              api.sendMessage("Hello I'm the Alfred chat bot.", event.threadID);
-			          api.sendMessage({sticker: 100002849721198}, event.threadID);
+			          api.sendMessage({sticker: 144884765685790}, event.threadID);
 		              slient = false;
 		            }
 		        	else if (text_string === 'scott sucks' && !slient) {
