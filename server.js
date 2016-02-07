@@ -22,7 +22,10 @@ login({email: "alexyuiop@gmail.com", password: "tartanhacks"}, function callback
 
     var stopListening = api.listen(function(err, event) {
     	if(err) return console.error(err);
-	 	console.log(event);
+   		//console.log("event: " + event);
+	 	// console.log("event type: " + event.type);
+	 	// console.log("event body: " + event.body);
+	 	// console.log("event sticker: " + event.sticker);
 	    switch(event.type) {
 	    	case "message":
 	          	var call = event.body.toLowerCase().substring(0, 6);
@@ -33,13 +36,13 @@ login({email: "alexyuiop@gmail.com", password: "tartanhacks"}, function callback
 		              slient = true;
 		            } else if(text_string === 'start listening' || text_string === 'start') {
 		              api.sendMessage("Hello I'm the Alfred chat bot.", event.threadID);
-			          api.sendMessage({sticker: 144884765685790}, event.threadID);
+			          api.sendMessage({sticker: 100002849721198}, event.threadID);
 		              slient = false;
 		            }
-		        	else if (text_string === 'scott sucks') {
+		        	else if (text_string === 'scott sucks' && !slient) {
 		        		api.sendMessage("Jake you suck a lot ha Alpha'd.", event.threadID);
 		        		slient = false;
-		        	} else {
+		        	}else if (!slient){
 		        		api.sendMessage("I didn't quite get that.", event.threadID);
 		        	}
 		        } else if (event.body.toLowerCase().indexOf("alfred") > -1) {
@@ -52,9 +55,12 @@ login({email: "alexyuiop@gmail.com", password: "tartanhacks"}, function callback
 			            } else if(event.body.toLowerCase() === '/takeaway coin') {
 			            	coins--;
 			              	api.sendMessage("I now have " + coins + "! I am poor.", event.threadID);
-			            } else {
+			            } else if (event.stickerID) {
+			            	console.log("sticker id = " + event.stickerID)
+		        			api.sendMessage({sticker: event.body.stickerID}, event.threadID)
+		        		} else {
 			            	api.markAsRead(event.threadID, function(err) {
-			              		if(err) console.log(err);
+			              		if(err) console.log("err: " + err);
 			            	});
 			            	api.sendMessage(event.body, event.threadID);
 			            }
