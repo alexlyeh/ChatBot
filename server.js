@@ -39,6 +39,10 @@ login({email: "alexyuiop@gmail.com", password: "tartanhacks"}, function callback
 			          api.sendMessage({sticker: 144884765685790}, event.threadID);
 		              slient = false;
 		            }
+		            else if (text_string === 'Jake is cool' && !silent) {
+		            	api.sendMessage("Woah Jake you rock kid so proud of you <3", event.threadID)
+		            	silent == false;
+		            }
 		        	else if (text_string === 'scott sucks' && !slient) {
 		        		api.sendMessage("Jake you suck a lot ha Alpha'd.", event.threadID);
 		        		slient = false;
