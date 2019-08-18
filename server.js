@@ -39,18 +39,15 @@ login({email: "alexyuiop@gmail.com", password: "tartanhacks"}, function callback
 			          api.sendMessage({sticker: 144884765685790}, event.threadID);
 		              slient = false;
 		            }
-		            else if (text_string === 'Jake is cool' && !silent) {
-		            	api.sendMessage("Woah Jake you rock kid so proud of you <3", event.threadID)
+		            else if (text_string === 'wh' && !silent) {
+		            	api.sendMessage("Woah hello!!", event.threadID)
 		            	silent == false;
 		            }
-		        	else if (text_string === 'scott sucks' && !slient) {
-		        		api.sendMessage("Jake you suck a lot ha Alpha'd.", event.threadID);
-		        		slient = false;
 		        	}else if (!slient){
 		        		api.sendMessage("I didn't quite get that.", event.threadID);
 		        	}
 		        } else if (event.body.toLowerCase().indexOf("alfred") > -1) {
-					api.sendMessage("Please begin your request with my first name, you peasant.", event.threadID);
+					api.sendMessage("Please begin your request with my first name.", event.threadID);
 		        } else {
 		        	if (!slient) {
 			            if(event.body.toLowerCase() === '/add coin') {
