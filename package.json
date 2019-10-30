@@ -15,7 +15,7 @@
   },
   "dependencies": {
     "facebook-chat-api": "git://github.com/schmavery/facebook-chat-api",
-    "ejs": "2.3.3",
+    "ejs": "2.7.1",
     "express": "4.13.3"
   },
   "engines": {
